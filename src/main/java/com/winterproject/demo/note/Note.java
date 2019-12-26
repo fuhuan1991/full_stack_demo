@@ -1,4 +1,4 @@
-package com.winterproject.demo.user;
+package com.winterproject.demo.note;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

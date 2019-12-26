@@ -50,13 +50,4 @@ public class UserService {
    List<User> getUserByName(String name) {
     return userDataAccessService.getUserByName(name);
   }
-
-  List<Note> getAllUserNotes(UUID userId) {
-    return userDataAccessService.selectAllUserNotes(userId);
-  }
-
-  void addNewNote(UUID userId, Note note) {
-    UUID noteId = UUID.randomUUID();
-    userDataAccessService.insertNote(noteId, userId, note);
-  }
 }

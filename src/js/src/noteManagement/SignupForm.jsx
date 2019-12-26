@@ -96,8 +96,8 @@ const SignupForm = (props) => {
                   onClick={() => submitForm()}
                   type="submit"
                   disabled={isSubmitting || isEmpty(touched) || !isValid}
-                >2
-                   Sign up<Icon type="right" />
+                >
+                  Sign up<Icon type="right" />
                 </Button>
               </div>
             </form>

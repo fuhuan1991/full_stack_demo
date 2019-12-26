@@ -50,16 +50,4 @@ public class UserController {
 
     return userList.get(0);
   }
-
-  // get all notes of a specific user
-  @GetMapping(path = "{userId}/notes")
-  public List<Note> getUserNotes(@PathVariable("userId") UUID userId) {
-    return userService.getAllUserNotes(userId);
-  }
-
-  // create a new note
-  @PostMapping(path = "{userId}/notes")
-  public void addNewNote(@PathVariable("userId") UUID userId, @RequestBody @Valid Note note) {
-    userService.addNewNote(userId, note);
-  }
 }

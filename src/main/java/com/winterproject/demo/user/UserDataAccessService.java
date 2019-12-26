@@ -89,44 +89,6 @@ public class UserDataAccessService {
     return jdbcTemplate.queryForObject(sql, new Object[] {name}, (resultSet, i) -> resultSet.getBoolean(1));
   }
 
-  int insertNote(UUID noteId, UUID userId, Note note) {
-    System.out.println("new note:");
-    System.out.println(note.getTitle());
-    System.out.println(note.getDescription());
-
-    String sql = "" +
-            "INSERT INTO note (" +
-            " note_id, " +
-            " user_id, " +
-            " title, " +
-            " description) " +
-            "VALUES (?, ?, ?, ?)";
-    int update = jdbcTemplate.update(
-            sql,
-            noteId,
-            userId,
-            note.getTitle(),
-            note.getDescription()
-    );
-    return update;
-  }
-
-  public List<Note> selectAllUserNotes(UUID userId) {
-    String sql = "" +
-            "SELECT " +
-            " note_id, " +
-            " user_id, " +
-            " title, " +
-            " description " +
-            "FROM note " +
-            "WHERE user_id = ?";
-    return jdbcTemplate.query(
-            sql,
-            new Object[]{userId},
-            mapNoteFromDb()
-    );
-  }
-
   private RowMapper<User> mapUserFromDb() {
     return (resultSet, i) -> {
       String userIdStr = resultSet.getString("user_id");
@@ -137,20 +99,6 @@ public class UserDataAccessService {
       String password = resultSet.getString("password");
 
       return new User(userId, name, email, password);
-    };
-  }
-
-  private RowMapper<Note> mapNoteFromDb() {
-    return (resultSet, i) -> {
-      String noteIdStr = resultSet.getString("note_id");
-      UUID noteId = UUID.fromString(noteIdStr);
-      String userIdStr = resultSet.getString("user_id");
-      UUID userId = UUID.fromString(userIdStr);
-
-      String title = resultSet.getString("title");
-      String description = resultSet.getString("description");
-
-      return new Note(noteId, userId, title, description);
     };
   }
 }
