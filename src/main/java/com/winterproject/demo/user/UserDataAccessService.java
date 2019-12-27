@@ -46,7 +46,8 @@ public class UserDataAccessService {
             "SELECT " +
             " user_id, " +
             " name, " +
-            " email " +
+            " email, " +
+            " password " +
             "FROM \"user\"";
 
     List<User> users = jdbcTemplate.query(sql, mapUserFromDb());
