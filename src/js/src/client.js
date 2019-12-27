@@ -61,3 +61,7 @@ export const createNote = note => {
     body: JSON.stringify(note),
   }).then(checkStatus);
 }
+
+export const deleteNote = userId => fetch(`api/notes/${userId}`, {
+  method: 'DELETE'
+}).then(checkStatus);

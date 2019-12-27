@@ -22,18 +22,22 @@ const SignupForm = (props) => {
 
           if (!values.name) {
             errors.name = 'name required';
+          } else if (values.name.length > 100) {
+            errors.name = 'name should be shorter than 100 characters'
           }
 
           if (!values.password) {
             errors.password = 'password required';
-          }
-
-          if (!isEmail(values.email)) {
-            errors.email = 'invalid E-mail address';
+          } else if (values.password.length > 20) {
+            errors.password = 'password should be shorter than 20 characters'
           }
 
           if (!values.email) {
             errors.email = 'E-mail required';
+          } else if (!isEmail(values.email)) {
+            errors.email = 'invalid E-mail address';
+          } else if (values.email.length > 100) {
+            errors.email = 'email E-mail should be shorter than 100 characters'
           }
 
           return errors;
@@ -41,7 +45,7 @@ const SignupForm = (props) => {
         onSubmit={(user, { setSubmitting }) => {
           // console.log(user)
           signup(user)
-            .then(() => { props.onSucess(); })
+            .then(() => { props.onSuccess(); })
             .catch(err => { props.onFailure(err); })
             .finally(() => { setSubmitting(false); });
         }}
@@ -58,7 +62,7 @@ const SignupForm = (props) => {
           isValid,
         }) => (
             <form onSubmit={handleSubmit}>
-              name: {errors.name && touched.name && <span style={tagStyle}>{errors.name}</span>}
+              <span className='chalkboard_font'>name:</span> {errors.name && touched.name && <span style={tagStyle}>{errors.name}</span>}
               <Input
                 style={inputStyle}
                 name="name"
@@ -67,7 +71,7 @@ const SignupForm = (props) => {
                 value={values.name}
                 placeholder='please insert user name'
               />
-              password: {errors.password && touched.password && <span style={tagStyle}>{errors.password}</span>}
+              <span className='chalkboard_font'>password:</span> {errors.password && touched.password && <span style={tagStyle}>{errors.password}</span>}
               <Input
                 style={inputStyle}
                 name="password"
@@ -76,7 +80,7 @@ const SignupForm = (props) => {
                 value={values.password}
                 placeholder='please insert password'
               />
-              email: {errors.email && touched.email && <span style={tagStyle}>{errors.email}</span>}
+              <span className='chalkboard_font'>email:</span> {errors.email && touched.email && <span style={tagStyle}>{errors.email}</span>}
               <Input
                 style={inputStyle}
                 name="email"

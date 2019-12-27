@@ -40,6 +40,7 @@ class NoteManagement extends Component {
   }
 
   onSignupFail = (e) => {
+    console.log(e,e.error)
     errorNotification('Sign up failed', e.error.message);
   }
 

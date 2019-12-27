@@ -48,7 +48,7 @@ const LoginForm = (props) => {
           isValid,
         }) => (
           <form onSubmit={handleSubmit}>
-            name: {errors.name && touched.name && <span style={tagStyle}>{errors.name}</span>}
+            <span className='chalkboard_font'>name:</span> {errors.name && touched.name && <span style={tagStyle}>{errors.name}</span>}
             <Input
               style={inputStyle}
               name="name"
@@ -58,7 +58,7 @@ const LoginForm = (props) => {
               placeholder='please insert user name'
             />
             
-            password: {errors.password && touched.password && <span style={tagStyle}>{errors.password}</span>}
+            <span className='chalkboard_font'>password:</span> {errors.password && touched.password && <span style={tagStyle}>{errors.password}</span>}
             <Input
               style={inputStyle}
               name="password"

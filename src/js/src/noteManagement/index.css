@@ -1,12 +1,32 @@
 .note_management {
-    padding-left: 20px;
-    background-image: linear-gradient(rgba(105,67,0,0.1) 0%,transparent 5.5%),url(https://www.memonotepad.com/img/wood.png);
+    margin-top: 20px;
+    padding: 20px;
+    /* background-image: linear-gradient(rgba(105,67,0,0.1) 0%,transparent 5.5%),url(https://www.memonotepad.com/img/wood.png);
     background-repeat: no-repeat,repeat;
-    background-size: auto,400px 400px;
+    background-size: auto,400px 400px; */
+    background: url(https://raw.github.com/mmoustafa/Chalkboard/master/img/bg.png);
     min-height: 600px;
+    border: tan solid 12px;
+    border-top: #bda27e solid 12px;
+    border-left: #b19876 solid 12px;
+    border-bottom: #c9ad86 solid 12px;
+    box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #c2a782, 0px 0px 0px 4px #a58e6f, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
 }
 
 .big_title{
     font-size: 60px;
-    color: rgba(151, 0, 0, 0.85);
+    color: #ebebeb;
+    font-family: chalk_font;
 }
+
+.chalkboard_font {
+    color: #ebebeb;
+    font-size: 20px;
+    font-family: chalk_font;
+}
+
+@font-face {
+    font-family: 'chalk_font';
+    src: url('../chalk_font.ttf')  format('truetype'),
+         url('../chalk_font.woff') format('woff');
+  }

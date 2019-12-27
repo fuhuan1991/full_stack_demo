@@ -40,7 +40,7 @@
 }
 
 .note_container {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .note_container .note_cell {
@@ -51,14 +51,15 @@
     padding-left: 10px;
     display: inline-block;
     vertical-align: top;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-right: 20px;
+    margin-bottom: 20px;
     border-radius: 10px;
     background-image: linear-gradient(rgba(53,85,131,0.2) 0%,rgba(255,255,255,1) 8%),url("https://www.memonotepad.com/img/paperfibers.png");
     background-size: 100% 25px,10% 10%;
     font-size: 17px;
     background-position-y: 4px;
     overflow: hidden;
+    cursor: pointer;
 }
 .note_container .note_cell .title{
     font-weight: bold;
@@ -69,7 +70,6 @@
     overflow: hidden;
 }
 
-.desktop .big_title {
-    font-size: 60px;
-    color: rgba(151, 0, 0, 0.85);
+.note_container .empty_msg {
+    margin-left: 48%;
 }

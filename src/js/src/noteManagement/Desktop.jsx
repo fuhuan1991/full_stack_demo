@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './desktop.css';
 import { getUserNotes } from '../client';
 import { errorNotification, successNotification } from '../Notification';
-import { Empty, Modal, Button, Icon } from 'antd';
+import { Modal, Button, Icon } from 'antd';
 import NoteForm from './NoteForm';
 
 
@@ -35,7 +35,7 @@ class Desktop extends Component {
 
   renderNoteArray = (noteArray) => {
     if (noteArray.length === 0) {
-      return <Empty description='No notes' />
+      return <span className='chalkboard_font empty_msg'>No notes</span>
     } else {
       return noteArray.map((note) => {
         return (
@@ -107,6 +107,13 @@ class Desktop extends Component {
             }}
             onFailure={(error) => {
               errorNotification('Error')
+            }}
+            onDeleteSuccess={() => {
+              this.fetchAllNotes(this.props.userId);
+              this.setState({
+                detailView: false,
+                targetNote: null
+              });
             }}
             onCancel={() => {
               this.setState({
