@@ -32,9 +32,9 @@ public class NoteController {
   }
 
   // delete a specific note
-  @DeleteMapping(path = "{userId}")
-  public void deleteNote(@PathVariable("userId") UUID userId) {
-    noteService.deleNote(userId);
+  @DeleteMapping(path = "{noteId}")
+  public void deleteNote(@PathVariable("noteId") UUID noteId) {
+    noteService.deleteNote(noteId);
   }
 
   // update a existing note

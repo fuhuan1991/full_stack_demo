@@ -10,7 +10,7 @@ const inputStyle = { marginBottom: '10px', width: '350px', display: 'block' };
 const SignupForm = (props) => {
   return (
     <div>
-      <h1>Sign up</h1>
+      <h1 className='big_title'>Sign up</h1>
       <Formik
         initialValues={{
           name: '',

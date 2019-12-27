@@ -10,7 +10,7 @@ const inputStyle = { marginBottom: '10px', width: '350px', display: 'block' };
 const LoginForm = (props) => {
   return (
     <div>
-      <h1>Log in</h1>
+      <h1 className='big_title'>Log in</h1>
       <Formik
         initialValues={{ 
           name: '',
@@ -31,9 +31,9 @@ const LoginForm = (props) => {
         }}
         onSubmit={(user, { setSubmitting }) => {
           login(user)
-          .then(() => { props.onSucess(); })
-          .catch(err => { props.onFailure(err); })
-          .finally(() => { setSubmitting(false); });
+          .then((o) => { props.onSuccess(o); })
+          .catch(err => { props.onFailure(err); setSubmitting(false);})
+          // .finally(() => { setSubmitting(false); });
         }}
       >
         {({
@@ -76,7 +76,7 @@ const LoginForm = (props) => {
               </Button>
               <Button 
                 onClick={() => submitForm()} 
-                type="submit" 
+                type="primary" 
                 disabled={isSubmitting || isEmpty(touched) || !isValid}
               >
                 Login <Icon type="right" />

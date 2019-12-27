@@ -4,7 +4,7 @@ import './index.css';
 import LoginForm from './LoginForm';
 import { successNotification, errorNotification} from '../Notification';
 import SignupForm from './SignupForm';
-
+import Desktop from './Desktop';
 
 class NoteManagement extends Component {
 
@@ -12,6 +12,7 @@ class NoteManagement extends Component {
     super(props);
     this.state = {
       currentStage: 'LOGIN',
+      userId: '',
     };
   }
 
@@ -19,8 +20,14 @@ class NoteManagement extends Component {
 
   }
 
-  onLoginSucc = () => {
-    successNotification('Login successful', 'Welcom back');
+  onLoginSucc = (o) => {
+    o.json().then((userInfo) => {
+      console.log(userInfo)
+      this.setState({ userId: userInfo.userId });
+      successNotification('Login successful', 'Welcom back');
+      this.switchToStage('DESKTOP')();
+    })
+    .catch(() => {errorNotification('Login failed', 'invalid user')});
   }
 
   onLoginFail = (e) => {
@@ -42,13 +49,20 @@ class NoteManagement extends Component {
     });
   }
 
+  onLogout = () => {
+    this.setState({
+      currentStage: 'LOGIN',
+      userId: '',
+    });
+  }
+
   render() {
     return (
       <div className='note_management'>
         {this.state.currentStage === 'LOGIN' 
           && 
           <LoginForm 
-            onSucess={this.onLoginSucc} 
+            onSuccess={this.onLoginSucc} 
             onFailure={this.onLoginFail}
             OnSitchToSignup={this.switchToStage('SIGNUP')}
           />}
@@ -56,10 +70,16 @@ class NoteManagement extends Component {
         {this.state.currentStage === 'SIGNUP' 
           && 
           <SignupForm 
-            onSucess={this.onSignupSucc} 
+            onSuccess={this.onSignupSucc} 
             onFailure={this.onSignupFail}
             OnSitchToLogin={this.switchToStage('LOGIN')}
           />}
+        {this.state.currentStage === 'DESKTOP'
+         &&
+         <Desktop 
+          userId={this.state.userId}
+          onLogout={this.onLogout}
+        />}
       </div>
     )
   }

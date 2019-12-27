@@ -39,4 +39,25 @@ export const signup = user => fetch('api/users', {
   body: JSON.stringify(user),
 }).then(checkStatus);
 
+export const getUserNotes = userId => fetch(`api/notes/getUserNotes/${userId}`, {
+  method: 'GET'
+}).then(checkStatus);
 
+export const updateNote = note => fetch('api/notes', {
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  method: 'PUT',
+  body: JSON.stringify(note),
+}).then(checkStatus);
+
+export const createNote = note => {
+  const userId = note.userId;
+  return fetch(`api/notes/${userId}`, {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(note),
+  }).then(checkStatus);
+}

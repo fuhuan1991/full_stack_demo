@@ -28,7 +28,7 @@ public class NoteService {
     noteDataAccessService.insertNote(noteId, userId, note);
   }
 
-  void deleNote(UUID noteId) {
+  void deleteNote(UUID noteId) {
     noteDataAccessService.deleteNote(noteId);
   }
 
