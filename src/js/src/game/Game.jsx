@@ -61,7 +61,7 @@ class Game extends React.Component {
   }
 
   handleClick(x,y) { 
-  	console.log('click',x,y);
+  	// console.log('click',x,y);
     if(this.state._currentState[x][y]){
       console.log('occupied!');
       return false;
@@ -158,12 +158,13 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <div className="status">{status}</div>
+          <div className="status white_font" style={{display: 'inline-block'}}>{status}</div>
+          <span className={this.state._isForX? 'coin_icon head' : 'coin_icon tail'}></span>
           <Board currentState={this.state._currentState} 
                  handleClick={(i,j) => this.handleClick(i,j)}
                  currentAvailabeState={this.state._currentAvailabeState}/>
-          <div className="status">number of "tail"s: {this.state._numberO}</div>
-          <div className="status">number of "head"s: {this.state._numberX}</div>
+          <div className="status white_font">number of "tail"s: {this.state._numberO}</div>
+          <div className="status white_font">number of "head"s: {this.state._numberX}</div>
         </div>
         <button className='clear' onClick={() => this.clearBoard()}>CLEAR</button>
       </div>

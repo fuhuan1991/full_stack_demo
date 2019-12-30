@@ -7,10 +7,37 @@
   font-family: serif;
 }
 .main .white_font {
-  color: #ebebeb;
-  font-size: 30px;
+  color: #cacaca;
+  font-size: 24px;
+}
+.main h1.white_font {
+  color: #cacaca;
+  font-size: 42px;
+  font-weight: bolder;
+}
+.main h2.white_font {
+  color: #cacaca;
+  font-size: 32px;
+  font-weight: bolder;
+}
+.main hr.line {
+  display: block;
+  height: 1px;
+  width: 50%;
+  background-color: #484848;
+  position: relative;
+  border: 0;
+  margin: .5em 0 1em;
+}
+.main ul.list {
+  color: #cacaca;
+  font-size: 24px;
+  list-style: circle;
+}
+.main a.info_link {
+  font-size: 24px;
 }
 
 body {
-  background-color: #414141;
+  background-color: #2a2a2a;
 }
