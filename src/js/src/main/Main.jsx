@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './main.css';
 import NoteManagement from '../noteManagement/index.jsx';
-
+import Game from '../game/Game.jsx';
 
 
 class Main extends Component {
@@ -24,6 +24,7 @@ class Main extends Component {
           There is a default account with some existing notes, name: guest, password: 123.<br />
           Made by React + Spring + PostgreSQL + AWS</p>
         <NoteManagement></NoteManagement>
+        <Game></Game>
       </div>
     )
   }
