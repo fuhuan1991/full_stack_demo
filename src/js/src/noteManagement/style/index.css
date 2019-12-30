@@ -27,6 +27,6 @@
 
 @font-face {
     font-family: 'chalk_font';
-    src: url('../chalk_font.ttf')  format('truetype'),
-         url('../chalk_font.woff') format('woff');
+    src: url('../../font/chalk_font.ttf')  format('truetype'),
+         url('../../font/chalk_font.woff') format('woff');
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './index.css';
+import './style/index.css';
 // import {  } from 'antd';
 import LoginForm from './LoginForm';
 import { successNotification, errorNotification} from '../Notification';
