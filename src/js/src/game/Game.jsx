@@ -2,6 +2,7 @@
 import React from 'react';
 import './style/game.css';
 import Board from './Board.jsx';
+import Scores from './Scores.jsx';
 import Search from './search.js';
 import config from './config.js';
 
@@ -30,7 +31,8 @@ class Game extends React.Component {
     board[SIZE/2 - 1][SIZE/2] = 'O';
     board[SIZE/2][SIZE/2 - 1] = 'O';
     board[SIZE/2][SIZE/2] = 'X'; 
-
+    // board[7][6] = 'X'
+    // board[7][7] = 'O'
     return board;
   }
 
@@ -44,6 +46,7 @@ class Game extends React.Component {
     board[SIZE/2 - 1][SIZE/2-2] = true;
     board[SIZE/2][SIZE/2+1] = true;
     board[SIZE/2+1][SIZE/2] = true;
+    // board[7][5] = true;
 
     return board;
   }
@@ -56,8 +59,13 @@ class Game extends React.Component {
       _isForX: false,//此时落子的是否为X
       _numberO: 2,//O棋子得到数量
       _numberX: 2,//X棋子的数量
-      _gameFinished: false//是否已经分出胜负（所有格子都占满）
+      _gameFinished: false,//是否已经分出胜负（所有格子都占满）
     };
+    window.xx = () => {
+      this.setState({
+        _gameFinished: true,
+      });
+    }
   }
 
   handleClick(x,y) { 
@@ -79,46 +87,48 @@ class Game extends React.Component {
     let points = {};
     let finishOrNot = false;
 
-	if(this.state._currentAvailabeState[x][y]){
-	  //如果这个点击的格子可以落子则进入结果分析阶段
-	  result = Search.SearchForReversalPieces(x,y,opponent,tempState);
-	  //修改棋盘状态，也就是记录此次落子
-      tempState[x][y] = currentToken;
+    if(this.state._currentAvailabeState[x][y]){
+      //如果这个点击的格子可以落子则进入结果分析阶段
+      result = Search.SearchForReversalPieces(x,y,opponent,tempState);
+      //修改棋盘状态，也就是记录此次落子
+        tempState[x][y] = currentToken;
 
-      //修改棋盘状态，反转对手棋子
-      for (let i = result.changeList.length - 1; i >= 0; i--) {
-        let temp_x = result.changeList[i].x;
-        let temp_y = result.changeList[i].y;
-        tempState[temp_x][temp_y] = currentToken;
-      };
+        //修改棋盘状态，反转对手棋子
+        for (let i = result.changeList.length - 1; i >= 0; i--) {
+          let temp_x = result.changeList[i].x;
+          let temp_y = result.changeList[i].y;
+          tempState[temp_x][temp_y] = currentToken;
+        };
 
-      //重新计算可以落子的区域
-      searchAvailableData = Search.searchAvailable(currentToken,tempState);
-      
-      //计算双方棋子数量
-      points = Search.CaculatePoints(tempState);
+        //重新计算可以落子的区域
+        searchAvailableData = Search.searchAvailable(currentToken,tempState);
+        
+        //计算双方棋子数量
+        points = Search.CaculatePoints(tempState);
 
-      //判断游戏是否结束
-      if( (points.X+points.O) === 64 ){
-        finishOrNot = true;
-      }
-      else if( searchAvailableData.noMoreMove ){
-        finishOrNot = true;
-      }
+        //inverse side
+        let isForXNext = !this.state._isForX;
 
-      //XO反转
-      let isForXNext = !this.state._isForX;
+        //判断游戏是否结束
+        if( (points.X + points.O) === 64){
+          finishOrNot = true;
+        } else if( searchAvailableData.noMoreMove ){
+          finishOrNot = true;
+          // same side move twice
+          // isForXNext = this.state._isForX;
+          // searchAvailableData = Search.searchAvailable(currentToken === 'X' ? 'O' : 'X', tempState);
+        }
 
-      //正式修改状态
-      this.setState({
-          _currentState: tempState,
-          _currentAvailabeState: searchAvailableData.availableState,
-          _isForX: isForXNext,
-          _numberO: points.O,
-          _numberX: points.X,
-          _gameFinished: finishOrNot,
-      });
-	};  
+        //正式修改状态
+        this.setState({
+            _currentState: tempState,
+            _currentAvailabeState: searchAvailableData.availableState,
+            _isForX: isForXNext,
+            _numberO: points.O,
+            _numberX: points.X,
+            _gameFinished: finishOrNot,
+        });
+    };  
   }
 
   clearBoard(){
@@ -152,7 +162,7 @@ class Game extends React.Component {
     }
     else{
       nextPlayer = this.state._isForX? "head" : "tail";
-      status = "Next player is: " + nextPlayer;
+      status = "Current player: " + nextPlayer;
     }
 
     return (
@@ -162,7 +172,12 @@ class Game extends React.Component {
           <span className={this.state._isForX? 'coin_icon head' : 'coin_icon tail'}></span>
           <Board currentState={this.state._currentState} 
                  handleClick={(i,j) => this.handleClick(i,j)}
-                 currentAvailabeState={this.state._currentAvailabeState}/>
+                 currentAvailabeState={this.state._currentAvailabeState}
+                 gameFinished = {this.state._gameFinished}  
+                 number_of_O = {this.state._numberO}
+                 number_of_X = {this.state._numberX}    
+          />
+          <Scores x_number={this.state._numberX} o_number={this.state._numberO} />
           <div className="status white_font">number of "tail"s: {this.state._numberO}</div>
           <div className="status white_font">number of "head"s: {this.state._numberX}</div>
         </div>

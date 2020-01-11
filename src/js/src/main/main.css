@@ -6,6 +6,10 @@
   margin: auto;
   font-family: serif;
 }
+.main .hide{
+  visibility: hidden;
+  opacity: 0;
+}
 .main .white_font {
   color: #cacaca;
   font-size: 24px;
@@ -40,4 +44,70 @@
 
 body {
   background-color: #2a2a2a;
+}
+
+.main .slider {
+  position: relative;
+}
+
+.main .slider .arrowLeft{
+  width: 44px;
+  height: auto;
+  position: absolute;
+  top: 240px;
+  left: 150px;
+  background-color: rgba(0,0,0,0.3);
+  height: 60px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.main .slider .arrowRight{
+  width: 44px;
+  height: auto;
+  position: absolute;
+  top: 240px;
+  left: 966px;
+  background-color: rgba(0,0,0,0.3);
+  height: 60px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.main .ant-carousel{
+  text-align: center;
+  height: 550px;
+  width: 900px;
+  margin: auto;
+  background: #2a2a2a;
+  overflow: hidden;
+}
+
+.main .ant-carousel .slick-slide {
+  height: 550px;
+}
+
+.main .ant-carousel .img{
+  height: 500px;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.main .ant-carousel .p0{
+  background-image: url('./img/home_page.png');
+}
+
+.main .ant-carousel .p1{
+  background-image: url('./img/dashboard.png');
+}
+.main .ant-carousel .p2{
+  background-image: url('./img/data_management.png');
+}
+.main .ant-carousel .p3{
+  background-image: url('./img/graph.png');
+}
+.main .ant-carousel .p4{
+  background-image: url('./img/graph2.png');
 }

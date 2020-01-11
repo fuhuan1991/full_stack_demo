@@ -54,7 +54,7 @@ var Search = {
 	},
 
 	searchAvailable:function(opponent,currentState){//搜索全部的方格，找出其中可以落子方格。
-
+// console.log('searchAvailable', opponent)
 		let noMoreMove = true;
 
 		let a0 = Array(SIZE).fill(null);
