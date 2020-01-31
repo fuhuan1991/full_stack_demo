@@ -1,4 +1,4 @@
-# my portfolio
+# My Portfolio
 
 * A little bit about myself and my experience
 
