@@ -1,4 +1,4 @@
-# My Portfolio
+# This is my Portfolio website it contains:
 
 * A little bit about myself and my experience
 
