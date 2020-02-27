@@ -22,7 +22,11 @@ class NoteManagement extends Component {
 
   onLoginSucc = (o) => {
     o.json().then((userInfo) => {
-      console.log(userInfo)
+
+      // store JWT as a cookie
+      document.cookie = `jwt_token=${userInfo.jwt}`;
+
+      // console.log(userInfo)
       this.setState({ userId: userInfo.userId });
       successNotification('Login successful', 'Welcom back');
       this.switchToStage('DESKTOP')();

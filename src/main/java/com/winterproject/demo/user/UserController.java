@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -74,25 +75,27 @@ public class UserController {
   // login
   @GetMapping(path = "/login")
   public JWTResponse login(@RequestParam String name, @RequestParam String password) throws Exception {
-//    try {
-//      this.authenticationManager.authenticate(
-//              new UsernamePasswordAuthenticationToken(name, password)
-//      );
-//    } catch (BadCredentialsException e) {
-//      throw new Exception("Incorrect username or password", e);
-//    }
+
+    try {
+      this.authenticationManager.authenticate(
+              new UsernamePasswordAuthenticationToken(name, password)
+      );
+    } catch (BadCredentialsException e) {
+      throw new Exception("Incorrect username or password", e);
+    }
 
     // old user checking method
     List<User> userList = userService.getUserByName(name);
-    if (userList.size() == 0) {
-      throw new LoginException("The user name " + name + " does not exist.");
-    }
-
-    if (!userList.get(0).getPassword().equals(password)) {
-      throw new LoginException("incorrect password.");
-    }
+//    if (userList.size() == 0) {
+//      throw new LoginException("The user name " + name + " does not exist.");
+//    }
+//
+//    if (!userList.get(0).getPassword().equals(password)) {
+//      throw new LoginException("incorrect password.");
+//    }
 
     final UserDetails userDetails = userDetailService.loadUserByUsername(name);
+//    UserDetails userDetails =  new org.springframework.security.core.userdetails.User(name, password, new ArrayList<>());
 
     final String jwt = this.jwtTokenUtil.generateToken(userDetails);
 

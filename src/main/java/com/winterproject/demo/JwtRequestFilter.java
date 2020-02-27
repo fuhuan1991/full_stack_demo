@@ -13,6 +13,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
@@ -25,15 +27,36 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
-    final String authorizationHeader = request.getHeader("Authorization");
+//    final String authorizationHeader = request.getHeader("Authorization");
+    final String cookie = request.getHeader("cookie");
 
     String username = null;
     String jwt = null;
 
-    if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-      jwt = authorizationHeader.substring(7);
+//    System.out.println("authorizationHeader: " + authorizationHeader);
+//    System.out.println("---------filter-----------");
+
+    String JwtCookiePattern = "jwt_token=([^;]*)[;]?";
+    Pattern p = Pattern.compile(JwtCookiePattern);
+    Matcher m = p.matcher(cookie);
+    m.find();
+
+    try{
+      jwt = m.group(1);
       username = jwtUtil.extractUsername(jwt);
+//      System.out.println("JWT found");
+    } catch (Exception e) {
+//      System.out.println("no JWT found");
+//      System.out.println(e);
     }
+
+
+//    if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+//      jwt = authorizationHeader.substring(7);
+//      username = jwtUtil.extractUsername(jwt);
+//    }
+
+// todo: add more checking for getUserNote api
 
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
       UserDetails userDetails = this.userDetailService.loadUserByUsername(username);

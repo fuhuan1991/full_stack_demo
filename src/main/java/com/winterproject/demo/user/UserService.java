@@ -47,7 +47,7 @@ public class UserService {
     userDataAccessService.insertUser(newStudentId, user);
   }
 
-   List<User> getUserByName(String name) {
+  public List<User> getUserByName(String name) {
     return userDataAccessService.getUserByName(name);
   }
 }
