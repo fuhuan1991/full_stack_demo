@@ -1,9 +1,6 @@
 package com.winterproject.demo.user;
 
-import com.winterproject.demo.AuthenticationRequest;
-import com.winterproject.demo.AuthenticationResponse;
-import com.winterproject.demo.JwtUtil;
-import com.winterproject.demo.MyUserDetailService;
+import com.winterproject.demo.*;
 import com.winterproject.demo.exception.LoginException;
 import com.winterproject.demo.note.Note;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,12 +73,17 @@ public class UserController {
 
   // login
   @GetMapping(path = "/login")
-  public User login(@RequestParam String name, @RequestParam String password) {
-    System.out.println("login:");
-    System.out.println("name = " + name);
-    System.out.println("password = " + password);
-    List<User> userList = userService.getUserByName(name);
+  public JWTResponse login(@RequestParam String name, @RequestParam String password) throws Exception {
+//    try {
+//      this.authenticationManager.authenticate(
+//              new UsernamePasswordAuthenticationToken(name, password)
+//      );
+//    } catch (BadCredentialsException e) {
+//      throw new Exception("Incorrect username or password", e);
+//    }
 
+    // old user checking method
+    List<User> userList = userService.getUserByName(name);
     if (userList.size() == 0) {
       throw new LoginException("The user name " + name + " does not exist.");
     }
@@ -90,6 +92,18 @@ public class UserController {
       throw new LoginException("incorrect password.");
     }
 
-    return userList.get(0);
+    final UserDetails userDetails = userDetailService.loadUserByUsername(name);
+
+    final String jwt = this.jwtTokenUtil.generateToken(userDetails);
+
+    System.out.println("---------------Login-------------------------");
+    System.out.println("login:");
+    System.out.println("name = " + name);
+    System.out.println("password = " + password);
+    System.out.println(userList.get(0));
+    System.out.println(jwt);
+    System.out.println("---------------------------------------------");
+    JWTResponse response = new JWTResponse(userList.get(0), jwt);
+    return response;
   }
 }

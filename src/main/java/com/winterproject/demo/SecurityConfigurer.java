@@ -32,6 +32,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     http.csrf().disable()
             .authorizeRequests()
             .antMatchers("/api/users/authenticate").permitAll()
+            .antMatchers("/api/users/login").permitAll()
             // allow to visit static materials
             .antMatchers("/").permitAll()
             .antMatchers("/favicon.ico").permitAll()
@@ -40,6 +41,7 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
             .anyRequest().authenticated()
             .and().sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
     http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
   }
 
