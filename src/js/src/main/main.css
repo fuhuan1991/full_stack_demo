@@ -1,8 +1,7 @@
 .main {
-  /* padding-top: 10px; */
-  padding: 20px;
-  height: 900px;
-  width: 1200px;
+  padding: 20px 20px 50px;
+  width: 100%;
+  max-width: 900px;
   margin: auto;
   font-family: serif;
 }
@@ -16,12 +15,15 @@
 }
 .main h1.white_font {
   color: #cacaca;
-  font-size: 42px;
+  font-size: 36px;
   font-weight: bolder;
+}
+.main h1.white_font a{
+  font-size: 24px;
 }
 .main h2.white_font {
   color: #cacaca;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: bolder;
 }
 .main hr.line {
@@ -42,35 +44,57 @@
   font-size: 24px;
 }
 
+
+@media screen and (max-width: 600px) {
+  .main .white_font {
+    font-size: 12px;
+  }
+  .main h1.white_font {
+    font-size: 21px;
+  }
+  .main h1.white_font a{
+    font-size: 12px;
+  }
+  .main h2.white_font {
+    font-size: 16px;
+  }
+  .main ul.list {
+    font-size: 12px;
+  }
+  .main a.info_link {
+    font-size: 12px;
+  }
+}
+
+
 body {
   background-color: #2a2a2a;
 }
 
 .main .slider {
   position: relative;
+  max-width: 900px;
 }
 
 .main .slider .arrowLeft{
-  width: 44px;
-  height: auto;
+  /* width: 4%; */
   position: absolute;
-  top: 240px;
-  left: 150px;
+  top: 45%;
+  left: 5%;
   background-color: rgba(0,0,0,0.3);
-  height: 60px;
+  /* height: 10%; */
   border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .main .slider .arrowRight{
-  width: 44px;
-  height: auto;
+  /* width: 4%; */
   position: absolute;
-  top: 240px;
-  left: 966px;
+  top: 45%;
+  right: 5%;
   background-color: rgba(0,0,0,0.3);
-  height: 60px;
+  /* height: 10%; */
   border-radius: 10px;
   cursor: pointer;
   transition: 0.5s;
@@ -78,36 +102,13 @@ body {
 
 .main .ant-carousel{
   text-align: center;
-  height: 550px;
-  width: 900px;
+  /* height: 550px;
+  width: 900px; */
   margin: auto;
   background: #2a2a2a;
   overflow: hidden;
 }
 
-.main .ant-carousel .slick-slide {
-  height: 550px;
-}
-
-.main .ant-carousel .img{
-  height: 500px;
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.main .ant-carousel .p0{
-  background-image: url('./img/home_page.png');
-}
-
-.main .ant-carousel .p1{
-  background-image: url('./img/dashboard.png');
-}
-.main .ant-carousel .p2{
-  background-image: url('./img/data_management.png');
-}
-.main .ant-carousel .p3{
-  background-image: url('./img/graph.png');
-}
-.main .ant-carousel .p4{
-  background-image: url('./img/graph2.png');
+.main img{
+  width: 100%;
 }

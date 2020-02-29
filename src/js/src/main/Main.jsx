@@ -3,7 +3,17 @@ import './main.css';
 import NoteManagement from '../noteManagement/index.jsx';
 import Game from '../game/Game.jsx';
 import { Carousel, Icon } from 'antd';
-
+import gameImg from '../assets/p1.png';
+import noteImg from '../assets/p2.png';
+import p0 from './img/home_page.png';
+import p1 from './img/dashboard.png';
+import p2 from './img/data_management.png';
+import p3 from './img/graph.png';
+import p4 from './img/graph2.png';
+import {
+  HashRouter as Router,
+  Link
+} from "react-router-dom";
 
 class Main extends Component {
 
@@ -38,11 +48,11 @@ class Main extends Component {
     return (
       <div className='main'>
         <h1 className='white_font' 
-          style={{textAlign: 'center', marginTop: '40px', marginBottom: '0px', fontSize: '50px'}}>
+          style={{textAlign: 'center', marginTop: '40px'}}>
             Hello, my name is Huan.
         </h1>
         <h1 className='white_font' 
-          style={{textAlign: 'center', fontSize: '50px'}}>
+          style={{textAlign: 'center'}}>
             I am a programmer.
         </h1>
         <h1 className='white_font' style={{marginBottom: '0px'}}>ABOUT ME</h1>
@@ -62,17 +72,17 @@ class Main extends Component {
         <h1 className='white_font'>1. GrowingIO.com</h1>
         <div className='slider' onMouseEnter={this.sliderEnter} onMouseLeave={this.sliderLeave}>
           <Carousel ref={node => (this.carousel = node)}>
-            <div className='p0 img'></div>
-            <div className='p1 img'></div>
-            <div className='p2 img'></div>
-            <div className='p3 img'></div>
-            <div className='p4 img'></div>
+            <img src={p0}></img>
+            <img src={p1}></img>
+            <img src={p2}></img>
+            <img src={p3}></img>
+            <img src={p4}></img>
           </Carousel>
           <div className={this.state.mouseOverSlide? 'arrowLeft' : 'arrowLeft hide'} onClick={this.previous}>
-            <Icon type="left" style={{ fontSize: 32, marginTop: '12px', marginLeft: '5px', color: 'white' }}/>
+            <Icon type="left" style={{ fontSize: 24, margin: '8px', color: 'white' }}/>
           </div>
           <div className={this.state.mouseOverSlide? 'arrowRight' : 'arrowRight hide'} onClick={this.next}>
-            <Icon type="right" style={{ fontSize: 32, marginTop: '12px', marginLeft: '5px', color: 'white' }}/>
+            <Icon type="right" style={{ fontSize: 24, margin: '8px', color: 'white' }}/>
           </div>
         </div>
         <h2 className='white_font'>About this project</h2>
@@ -101,10 +111,11 @@ class Main extends Component {
           <li>CSS3 & less</li>
           <li>Webpack</li>
         </ul>
-        
 
-        <h1 className='white_font'>2. Chalkboard Note</h1>
-        <NoteManagement></NoteManagement>
+
+
+        <h1 className='white_font'>2. Chalkboard Note &nbsp;<Link to="/note">Try it</Link></h1>
+        <img src={noteImg}></img>
         <h2 className='white_font'>About this project</h2>
         <hr className='line'/>
         <p className='white_font'>
@@ -119,13 +130,18 @@ class Main extends Component {
           <li>Javascript ES6</li>
           <li>CSS3</li>
           <li>Spring Boot</li>
+          <li>Spring Scurity</li>
+          <li>JWT</li>
           <li>PostgreSQL</li>
           <li>Docker</li>
           <li>AWS</li>
         </ul>
 
-        <h1 className='white_font'>3. Reversi Game</h1>
-        <Game></Game>
+
+
+
+        <h1 className='white_font'>3. Reversi Game &nbsp;<Link to="/game">Try it</Link></h1>
+        <img src={gameImg}></img>
         <h2 className='white_font'>About this project</h2>
         <hr className='line'/>
         <p className='white_font'>
@@ -142,8 +158,8 @@ class Main extends Component {
         <hr className='line'/>
         <ul className='list'>
           <li>React</li>
-          <li>Javascript ES6</li>
-          <li>CSS3</li>
+          <li>Javascript ES6/TypeScript</li>
+          <li>CSS3/Sass</li>
         </ul>
       </div>
     )

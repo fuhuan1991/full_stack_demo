@@ -3,11 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'antd/dist/antd.css';
 import Main from './main/Main';
-import * as serviceWorker from './serviceWorker';
+import Game from './game/Game';
+import NoteManagement from './noteManagement/index';
+// import * as serviceWorker from './serviceWorker';
+import {
+    HashRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
-ReactDOM.render(<Main />, document.getElementById('root'));
+const Root = 
+    <Router>
+        <Switch>
+            <Route exact path="/">
+                <Main />
+            </Route>
+            <Route path="/game">
+                <Game />
+            </Route>
+            <Route path="/note">
+                <NoteManagement />
+            </Route>
+        </Switch>
+    </Router>;
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(Root, document.getElementById('root'));
+
+document.title = 'My Website';
