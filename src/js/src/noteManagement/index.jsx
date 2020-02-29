@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './style/index.css';
-// import {  } from 'antd';
+import './style/index.scss';
 import LoginForm from './LoginForm';
 import { successNotification, errorNotification} from '../Notification';
 import SignupForm from './SignupForm';

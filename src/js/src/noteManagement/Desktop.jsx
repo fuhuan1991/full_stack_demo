@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style/desktop.css';
+import './style/desktop.scss';
 import { getUserNotes } from '../client';
 import { errorNotification, successNotification } from '../Notification';
 import { Modal, Button, Icon } from 'antd';
