@@ -4,6 +4,12 @@ import LoginForm from './LoginForm';
 import { successNotification, errorNotification} from '../Notification';
 import SignupForm from './SignupForm';
 import Desktop from './Desktop';
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class NoteManagement extends Component {
 
@@ -62,29 +68,32 @@ class NoteManagement extends Component {
 
   render() {
     return (
-      <div className='note_management'>
-        {this.state.currentStage === 'LOGIN' 
-          && 
-          <LoginForm 
-            onSuccess={this.onLoginSucc} 
-            onFailure={this.onLoginFail}
-            OnSitchToSignup={this.switchToStage('SIGNUP')}
-          />}
+      <React.Fragment>
+        <Link style={{fontSize: '24px', margin: '10px'}} to="/">Back</Link>
+        <div className='note_management'>
+          {this.state.currentStage === 'LOGIN' 
+            && 
+            <LoginForm 
+              onSuccess={this.onLoginSucc} 
+              onFailure={this.onLoginFail}
+              OnSitchToSignup={this.switchToStage('SIGNUP')}
+            />}
 
-        {this.state.currentStage === 'SIGNUP' 
-          && 
-          <SignupForm 
-            onSuccess={this.onSignupSucc} 
-            onFailure={this.onSignupFail}
-            OnSitchToLogin={this.switchToStage('LOGIN')}
+          {this.state.currentStage === 'SIGNUP' 
+            && 
+            <SignupForm 
+              onSuccess={this.onSignupSucc} 
+              onFailure={this.onSignupFail}
+              OnSitchToLogin={this.switchToStage('LOGIN')}
+            />}
+          {this.state.currentStage === 'DESKTOP'
+          &&
+          <Desktop 
+            userId={this.state.userId}
+            onLogout={this.onLogout}
           />}
-        {this.state.currentStage === 'DESKTOP'
-         &&
-         <Desktop 
-          userId={this.state.userId}
-          onLogout={this.onLogout}
-        />}
-      </div>
+        </div>
+      </React.Fragment>
     )
   }
 }
