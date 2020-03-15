@@ -31,5 +31,6 @@ build/
 .vscode/
 
 ### Front end ###
+src/js/src/game
 src/js/node_modules
 src/js/build
