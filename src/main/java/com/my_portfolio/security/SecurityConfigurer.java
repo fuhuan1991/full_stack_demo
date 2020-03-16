@@ -27,20 +27,16 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
 
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().disable()
-            .authorizeRequests()
-            .antMatchers("/api/users/authenticate").permitAll()
-            .antMatchers("/api/users/login").permitAll()
-            // allow to visit static materials
-            .antMatchers("/").permitAll()
-            .antMatchers("/favicon.ico").permitAll()
-            .antMatchers("/manifest.json").permitAll()
-            .antMatchers("/static/**").permitAll()
-            .anyRequest().authenticated()
-            .and().sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+    // add a filter to check JWT for each request
     http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
+    http.csrf().disable()// .csrf().disable() disable Cross Site Request Forgery protection
+            .authorizeRequests()
+            .antMatchers("/api/notes/**").authenticated()
+            .antMatchers("/**").permitAll()
+            .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
   }
 
   @Override

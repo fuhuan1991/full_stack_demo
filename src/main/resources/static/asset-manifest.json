@@ -1,28 +1,35 @@
 {
   "files": {
-    "main.css": "/static/css/main.b819e263.chunk.css",
-    "main.js": "/static/js/main.2b13332e.chunk.js",
-    "main.js.map": "/static/js/main.2b13332e.chunk.js.map",
+    "main.css": "/static/css/main.2f993708.chunk.css",
+    "main.js": "/static/js/main.27c3e804.chunk.js",
+    "main.js.map": "/static/js/main.27c3e804.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.503500fc.js",
     "runtime-main.js.map": "/static/js/runtime-main.503500fc.js.map",
     "static/css/2.aef8ad04.chunk.css": "/static/css/2.aef8ad04.chunk.css",
-    "static/js/2.7c7ce706.chunk.js": "/static/js/2.7c7ce706.chunk.js",
-    "static/js/2.7c7ce706.chunk.js.map": "/static/js/2.7c7ce706.chunk.js.map",
+    "static/js/2.111c9a8b.chunk.js": "/static/js/2.111c9a8b.chunk.js",
+    "static/js/2.111c9a8b.chunk.js.map": "/static/js/2.111c9a8b.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.6cc34d42f9217eb52482163a8bc2d6ff.js": "/precache-manifest.6cc34d42f9217eb52482163a8bc2d6ff.js",
+    "precache-manifest.a8bdf8473cf10e0caa9d7ae5047c6744.js": "/precache-manifest.a8bdf8473cf10e0caa9d7ae5047c6744.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.aef8ad04.chunk.css.map": "/static/css/2.aef8ad04.chunk.css.map",
-    "static/css/main.b819e263.chunk.css.map": "/static/css/main.b819e263.chunk.css.map",
-    "static/js/2.7c7ce706.chunk.js.LICENSE.txt": "/static/js/2.7c7ce706.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/static/media/chalk_font.f4a751e8.woff",
-    "static/media/main.css": "/static/media/home_page.e8315dc0.png",
-    "static/media/game.scss": "/static/media/wood.53cd660d.jpg"
+    "static/css/main.2f993708.chunk.css.map": "/static/css/main.2f993708.chunk.css.map",
+    "static/js/2.111c9a8b.chunk.js.LICENSE.txt": "/static/js/2.111c9a8b.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/static/media/chalkboard_bg.6fb19d93.png",
+    "static/media/dashboard.png": "/static/media/dashboard.eccb301b.png",
+    "static/media/data_management.png": "/static/media/data_management.7dc3208c.png",
+    "static/media/graph.png": "/static/media/graph.9d066c1f.png",
+    "static/media/graph2.png": "/static/media/graph2.d583ef95.png",
+    "static/media/game.scss": "/static/media/wood.53cd660d.jpg",
+    "static/media/home_page.png": "/static/media/home_page.e8315dc0.png",
+    "static/media/p1.png": "/static/media/p1.28a7a64b.png",
+    "static/media/p2.png": "/static/media/p2.4b92592b.png",
+    "static/media/desktop.scss": "/static/media/paper_gb.b5255cac.png"
   },
   "entrypoints": [
     "static/js/runtime-main.503500fc.js",
     "static/css/2.aef8ad04.chunk.css",
-    "static/js/2.7c7ce706.chunk.js",
-    "static/css/main.b819e263.chunk.css",
-    "static/js/main.2b13332e.chunk.js"
+    "static/js/2.111c9a8b.chunk.js",
+    "static/css/main.2f993708.chunk.css",
+    "static/js/main.27c3e804.chunk.js"
   ]
 }

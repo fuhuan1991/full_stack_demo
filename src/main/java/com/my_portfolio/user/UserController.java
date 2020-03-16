@@ -38,33 +38,9 @@ public class UserController {
     return userService.getAllUsers();
   }
 
-  @GetMapping(path = "/hello")
-  public String hello() {
-    return "Hello";
-  }
-
-  @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-  public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-
-    try {
-      this.authenticationManager.authenticate(
-              new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
-      );
-    } catch (BadCredentialsException e) {
-      throw new Exception("Incorrect username or password", e);
-    }
-
-    final UserDetails userDetails = userDetailService.loadUserByUsername(authenticationRequest.getUsername());
-
-    final String jwt = this.jwtTokenUtil.generateToken(userDetails);
-
-    return ResponseEntity.ok(new AuthenticationResponse(jwt));
-  }
-
   // register a new user
   @PostMapping
   public void addNewUser(@RequestBody @Valid User user) {
-//    System.out.println(">>> new user: " + user + "\n");
     userService.addNewUser(user);
   }
 
@@ -82,17 +58,8 @@ public class UserController {
 
     // old user checking method
     List<User> userList = userService.getUserByName(name);
-//    if (userList.size() == 0) {
-//      throw new LoginException("The user name " + name + " does not exist.");
-//    }
-//
-//    if (!userList.get(0).getPassword().equals(password)) {
-//      throw new LoginException("incorrect password.");
-//    }
 
     final UserDetails userDetails = userDetailService.loadUserByUsername(name);
-//    UserDetails userDetails =  new org.springframework.security.core.userdetails.User(name, password, new ArrayList<>());
-
     final String jwt = this.jwtTokenUtil.generateToken(userDetails);
 
     System.out.println("---------------Login-------------------------");

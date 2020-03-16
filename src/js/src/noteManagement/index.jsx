@@ -60,6 +60,7 @@ class NoteManagement extends Component {
   }
 
   onLogout = () => {
+    document.cookie = "jwt_token= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
     this.setState({
       currentStage: 'LOGIN',
       userId: '',

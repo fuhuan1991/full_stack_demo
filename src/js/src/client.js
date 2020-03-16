@@ -78,7 +78,7 @@ export const deleteNote = userId => fetch(`api/notes/${userId}`, {
 
 export const getJWTFromCookie = () => {
   const result = document.cookie.match(/jwt_token=([^;]*)[;]?/);
-  if (result.length >= 2) {
+  if (result !== null && result.length >= 2) {
     return result[1];
   } else {
     return '';

@@ -33,15 +33,13 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     String username = null;
     String jwt = null;
 
-//    System.out.println("authorizationHeader: " + authorizationHeader);
 //    System.out.println("---------filter-----------");
-
+//    System.out.println("cookie:" + cookie);
     String JwtCookiePattern = "jwt_token=([^;]*)[;]?";
     Pattern p = Pattern.compile(JwtCookiePattern);
-    Matcher m = p.matcher(cookie);
-    m.find();
-
     try{
+      Matcher m = p.matcher(cookie);
+      m.find();
       jwt = m.group(1);
       username = jwtUtil.extractUsername(jwt);
 //      System.out.println("JWT found");
@@ -50,14 +48,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 //      System.out.println(e);
     }
 
-
-//    if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-//      jwt = authorizationHeader.substring(7);
-//      username = jwtUtil.extractUsername(jwt);
-//    }
-
-// todo: add more checking for getUserNote api
-
+//    System.out.println("username: " + username);
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
       UserDetails userDetails = this.userDetailService.loadUserByUsername(username);
       if (jwtUtil.validateToken(jwt, userDetails)) {
@@ -67,6 +58,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
       }
     }
+
+//    System.out.println(SecurityContextHolder.getContext());
+//    System.out.println(SecurityContextHolder.getContext().getAuthentication());
+//    System.out.println("-------------------------");
     chain.doFilter(request, response);
   }
 }

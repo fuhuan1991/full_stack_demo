@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a690fd1984b659030e46134e747f7948",
+    "revision": "d4bf94077508d53cd716389bc0c9199d",
     "url": "/index.html"
   },
   {
-    "revision": "289efb0b066af5ba2f11",
+    "revision": "cba6207c80ac9eff6fbf",
     "url": "/static/css/2.aef8ad04.chunk.css"
   },
   {
-    "revision": "003d45f026d6bca17e51",
-    "url": "/static/css/main.b819e263.chunk.css"
+    "revision": "6b1046fa573b44af20bb",
+    "url": "/static/css/main.2f993708.chunk.css"
   },
   {
-    "revision": "289efb0b066af5ba2f11",
-    "url": "/static/js/2.7c7ce706.chunk.js"
+    "revision": "cba6207c80ac9eff6fbf",
+    "url": "/static/js/2.111c9a8b.chunk.js"
   },
   {
-    "revision": "2b993ddac0da262858e19ec8ca8bb46f",
-    "url": "/static/js/2.7c7ce706.chunk.js.LICENSE.txt"
+    "revision": "bdddc50e15c660dddb2cc7cfaedc9c65",
+    "url": "/static/js/2.111c9a8b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "003d45f026d6bca17e51",
-    "url": "/static/js/main.2b13332e.chunk.js"
+    "revision": "6b1046fa573b44af20bb",
+    "url": "/static/js/main.27c3e804.chunk.js"
   },
   {
     "revision": "a0f011b34eb2f352d77b",
@@ -34,6 +34,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "f4a751e8f3dfcbf185e332c67e789f0b",
     "url": "/static/media/chalk_font.f4a751e8.woff"
+  },
+  {
+    "revision": "6fb19d93b5ab5f0b7aca4b1e130b8e36",
+    "url": "/static/media/chalkboard_bg.6fb19d93.png"
   },
   {
     "revision": "eccb301b25d82e87ff79dfbddd9f053e",
@@ -58,6 +62,18 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "e8315dc0b2560aebecd92aaaf1b3b411",
     "url": "/static/media/home_page.e8315dc0.png"
+  },
+  {
+    "revision": "28a7a64bdcc2a586de3f577f5147c870",
+    "url": "/static/media/p1.28a7a64b.png"
+  },
+  {
+    "revision": "4b92592bd2d3a28e27b3623820eb2ae2",
+    "url": "/static/media/p2.4b92592b.png"
+  },
+  {
+    "revision": "b5255cace82757aa40c22bfef90ed891",
+    "url": "/static/media/paper_gb.b5255cac.png"
   },
   {
     "revision": "457cc00d385f2493561bbda5c3650233",
