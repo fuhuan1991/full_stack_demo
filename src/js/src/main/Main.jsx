@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './main.css';
 import NoteManagement from '../noteManagement/index.jsx';
-import Game from '../game/Game.jsx';
+import Game from '../game/Game';
 import { Carousel, Icon } from 'antd';
 import gameImg from '../assets/p1.png';
 import noteImg from '../assets/p2.png';
