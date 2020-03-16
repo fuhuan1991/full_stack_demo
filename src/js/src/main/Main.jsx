@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './main.css';
-import NoteManagement from '../noteManagement/index.jsx';
-import Game from '../game/Game';
 import { Carousel, Icon } from 'antd';
 import gameImg from '../assets/p1.png';
 import noteImg from '../assets/p2.png';
@@ -11,7 +9,6 @@ import p2 from './img/data_management.png';
 import p3 from './img/graph.png';
 import p4 from './img/graph2.png';
 import {
-  HashRouter as Router,
   Link
 } from "react-router-dom";
 
@@ -72,11 +69,11 @@ class Main extends Component {
         <h1 className='white_font'>1. GrowingIO.com</h1>
         <div className='slider' onMouseEnter={this.sliderEnter} onMouseLeave={this.sliderLeave}>
           <Carousel ref={node => (this.carousel = node)}>
-            <img src={p0}></img>
-            <img src={p1}></img>
-            <img src={p2}></img>
-            <img src={p3}></img>
-            <img src={p4}></img>
+            <img src={p0} alt='cannot be displayed due to network reasons'></img>
+            <img src={p1} alt='cannot be displayed due to network reasons'></img>
+            <img src={p2} alt='cannot be displayed due to network reasons'></img>
+            <img src={p3} alt='cannot be displayed due to network reasons'></img>
+            <img src={p4} alt='cannot be displayed due to network reasons'></img>
           </Carousel>
           <div className={this.state.mouseOverSlide? 'arrowLeft' : 'arrowLeft hide'} onClick={this.previous}>
             <Icon type="left" style={{ fontSize: 24, margin: '8px', color: 'white' }}/>
@@ -115,7 +112,7 @@ class Main extends Component {
 
 
         <h1 className='white_font'>2. Chalkboard Note &nbsp;<Link to="/note">Try it</Link></h1>
-        <img src={noteImg}></img>
+        <img src={noteImg} alt='cannot be displayed due to network reasons'></img>
         <h2 className='white_font'>About this project</h2>
         <hr className='line'/>
         <p className='white_font'>
@@ -139,9 +136,8 @@ class Main extends Component {
 
 
 
-
         <h1 className='white_font'>3. Reversi Game &nbsp;<Link to="/game">Try it</Link></h1>
-        <img src={gameImg}></img>
+        <img src={gameImg} alt='cannot be displayed due to network reasons'></img>
         <h2 className='white_font'>About this project</h2>
         <hr className='line'/>
         <p className='white_font'>

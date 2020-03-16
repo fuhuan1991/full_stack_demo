@@ -5,9 +5,6 @@ import { successNotification, errorNotification} from '../Notification';
 import SignupForm from './SignupForm';
 import Desktop from './Desktop';
 import {
-  HashRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 
