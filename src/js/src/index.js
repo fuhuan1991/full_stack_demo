@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import 'antd/dist/antd.css';
 import Main from './main/Main';
-import Game from './game/Game';
+import Game from './game/Game.tsx';
 import NoteManagement from './noteManagement/index';
 // import * as serviceWorker from './serviceWorker';
 import {

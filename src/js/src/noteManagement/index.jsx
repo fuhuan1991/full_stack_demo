@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './style/index.scss';
 import LoginForm from './LoginForm';
-import { successNotification, errorNotification} from '../Notification';
+import { successNotification, errorNotification } from '../Notification';
 import SignupForm from './SignupForm';
 import Desktop from './Desktop';
 import {
   Link
 } from "react-router-dom";
+import { getCookie } from '../util.js';
 
 class NoteManagement extends Component {
 
@@ -19,18 +20,27 @@ class NoteManagement extends Component {
   }
 
   componentDidMount() {
+    const jwt = getCookie('jwt_token');
+    const userName = getCookie('user_name');
+    const userId = getCookie('user_id');
 
+    if (jwt && userName && userId) {
+      this.setState({ userId: userId });
+      successNotification('Login successful', 'Welcom back' + userName);
+      this.switchToStage('DESKTOP')();
+    }
   }
 
   onLoginSucc = (o) => {
     o.json().then((userInfo) => {
 
-      // store JWT as a cookie
+      // store user info as cookie
       document.cookie = `jwt_token=${userInfo.jwt}`;
+      document.cookie = `user_name=${userInfo.name}`;
+      document.cookie = `user_id=${userInfo.userId}`;
 
-      // console.log(userInfo)
       this.setState({ userId: userInfo.userId });
-      successNotification('Login successful', 'Welcom back');
+      successNotification('Login successful', 'Welcom back' + userInfo.name);
       this.switchToStage('DESKTOP')();
     })
     .catch(() => {errorNotification('Login failed', 'invalid user')});
@@ -57,7 +67,11 @@ class NoteManagement extends Component {
   }
 
   onLogout = () => {
-    document.cookie = "jwt_token= ; expires = Thu, 01 Jan 1970 00:00:00 GMT"
+    // remove all the cookies
+    document.cookie = "jwt_token= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie = "user_name= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie = "user_id= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+
     this.setState({
       currentStage: 'LOGIN',
       userId: '',
