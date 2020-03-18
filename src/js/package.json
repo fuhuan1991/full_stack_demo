@@ -12,6 +12,7 @@
     "@types/react-dom": "^16.9.5",
     "antd": "^3.26.3",
     "formik": "^2.0.8",
+    "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

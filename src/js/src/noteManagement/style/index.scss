@@ -1,10 +1,10 @@
 .note_management {
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
     width: 100%;
     max-width: 1050px;
     margin: 30px auto;
     font-family: serif;
-    background: url(../../assets/chalkboard_bg.png);
+    background: url(../img/chalkboard_bg.png);
     min-height: 600px;
     border: tan solid 12px;
     border-top: #bda27e solid 12px;
@@ -26,8 +26,17 @@
 
 .big_title{
     font-size: 60px;
+    line-height: 85px;
     color: #ebebeb;
     font-family: chalk_font;
+    margin-bottom: 0px;
+}
+
+.small_title{
+    font-size: 30px;
+    color: #ebebeb;
+    font-family: chalk_font;
+    margin-bottom: 0px;
 }
 
 .chalkboard_font {

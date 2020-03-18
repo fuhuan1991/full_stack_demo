@@ -1,3 +1,6 @@
+// import { moment } from 'moment';
+const moment = require('moment');
+
 export const isEmpty = (obj) => {
   for (var key in obj) {
     if (obj.hasOwnProperty(key))
@@ -28,3 +31,36 @@ export function getCookie(name) {
   return null;
 }
 
+export const momentToString = (obj) => {
+  if(obj === null) return '';
+  return obj.format("YYYY-MM-DD HH:mm:ss");
+}
+
+export const stringToMoment = (timeStr) => {
+  if (timeStr === '') return null;
+  return moment(timeStr);
+}
+
+export const compareTimeString = (a, b) => {
+  if (a.time >= b.time) {
+    return 1;
+  } else {
+    return -1;
+  }
+}
+
+export const getEventInRange = (eventArray, d) => {
+  if (!eventArray) return [];
+  const start = moment();
+  const end = moment().add(d, 'days');
+
+  return eventArray.filter((event) => {
+    const timeStr = event.time;
+    const obj = moment(timeStr);
+    if (obj.isBefore(end) && obj.isAfter(start)) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+}

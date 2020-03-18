@@ -1,0 +1,43 @@
+.note_management {
+    .meter {
+        width: 100%;
+        margin-top: 32px;
+        margin-bottom: 64px;
+
+        .axis {
+            margin-top: 10px;
+            height: 6px;
+            position: relative;
+            background: url('../img/line.png');
+            background-size: 100% 100%;
+        }
+
+        .point {
+            height: 24px;
+            width: 24px;
+            position: absolute;
+            top: -8px;
+            background: url('../img/cross.png');
+            background-size: 100% 100%;
+        }
+
+        .start_point{
+            height: 24px;
+            width: 24px;
+            position: absolute;
+            left: 3%;
+            top: -8px;
+            background: url('../img/circle.png');
+            background-size: 100% 100%;
+        }
+        .end_point{
+            height: 24px;
+            width: 24px;
+            position: absolute;
+            left: 95%;
+            top: -8px;
+            background: url('../img/circle.png');
+            background-size: 100% 100%;
+        }
+    }
+}

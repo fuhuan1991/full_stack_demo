@@ -1,9 +1,9 @@
-.node_modal{
+.note_modal,.event_modal{
     .ant-modal {
         top: 25px;
     }
     .ant-modal-content {
-        background-image: linear-gradient(rgba(53,85,131,0.2) 0%,rgba(255,255,255,1) 8%),url("../../assets/paper_gb.png");
+        background-image: linear-gradient(rgba(53,85,131,0.2) 0%,rgba(255,255,255,1) 8%),url("../img/paper_gb.png");
         background-size: 100% 25px,10% 10%;
         padding-left: 24px;
     }
@@ -16,7 +16,7 @@
     }
 }
 
-.node_form {
+.note_form {
     height: 680px;
     .inner_form {
         height: 100%;
@@ -27,6 +27,40 @@
             margin-bottom: 10px;
             margin-left: 2px;
             height: 580px;
+            background: transparent;
+            border: none;
+            font-size: 17px;
+            font-family: monospace;
+            resize: none;
+        }
+        input{
+            background: transparent;
+            border: none;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 20px;
+        }
+    }
+}
+
+.event_form {
+    height: 680px;
+    .inner_form {
+        height: 100%;
+    }
+    .inner_form {
+        .time_selection{
+            margin-top: 18px;
+            padding-left: 11px;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 20px;
+        }
+        textarea{
+            margin-top: 18px;
+            margin-bottom: 10px;
+            margin-left: 2px;
+            height: 544px;
             background: transparent;
             border: none;
             font-size: 17px;
@@ -56,7 +90,7 @@
         margin-right: 20px;
         margin-bottom: 20px;
         border-radius: 10px;
-        background-image: linear-gradient(rgba(53,85,131,0.2) 0%,rgba(255,255,255,1) 8%),url("https://www.memonotepad.com/img/paperfibers.png");
+        background-image: linear-gradient(rgba(53,85,131,0.2) 0%,rgba(255,255,255,1) 8%),url('../img/paperfibers.png');
         background-size: 100% 25px,10% 10%;
         font-size: 17px;
         background-position-y: 4px;
@@ -65,6 +99,7 @@
 
         .title{
             font-weight: bold;
+            color: #1f2b6e;
         }
         .description{
             height: 96px;
@@ -74,10 +109,44 @@
     .empty_msg {
         margin-left: 48%;
     }
+    .event_cell{
+        width: 300px;
+        height: 80px;
+        padding-top: 16px;
+        padding-left: 40px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        background-image: url('../img/yellow_paper.png');
+        background-size: 340px 600px;
+        font-size: 17px;
+        background-position-y: -20px;
+        background-position-x: -20px;
+        overflow: hidden;
+        cursor: pointer;
+
+        .name{
+            font-weight: bold;
+            font-size: 20px;
+            color: #b81a0f;
+            width: 260px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            
+        }
+        .description{
+            height: 96px;
+            overflow: hidden;
+            line-height: 23px;
+        }
+    }
 }
 
 @media screen and (max-width: 600px) {
-    .node_form{
+    .note_form{
         height: 500px;
 
         .inner_form .ant-input[name="description"]{

@@ -27,14 +27,19 @@ export const login = user => {
 export const signup = user => fetch('api/users', {
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + getJWTFromCookie(),
+    // 'Authorization': 'Bearer ' + getJWTFromCookie(),
   },
   method: 'POST',
   body: JSON.stringify(user),
 }).then(checkStatus);
 
-// get all the note of a user
+// get all the notes of a user
 export const getUserNotes = userId => fetch(`api/notes/getUserNotes/${userId}`, {
+  method: 'GET'
+}).then(checkStatus);
+
+// get all the events of a user
+export const getUserEvents = userId => fetch(`api/events/getUserEvents/${userId}`, {
   method: 'GET'
 }).then(checkStatus);
 
@@ -42,10 +47,20 @@ export const getUserNotes = userId => fetch(`api/notes/getUserNotes/${userId}`, 
 export const updateNote = note => fetch('api/notes', {
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + getJWTFromCookie(),
+    // 'Authorization': 'Bearer ' + getJWTFromCookie(),
   },
   method: 'PUT',
   body: JSON.stringify(note),
+}).then(checkStatus);
+
+//update a exsiting event
+export const updateEvent = event => fetch('api/events', {
+  headers: {
+    'Content-Type': 'application/json',
+    // 'Authorization': 'Bearer ' + getJWTFromCookie(),
+  },
+  method: 'PUT',
+  body: JSON.stringify(event),
 }).then(checkStatus);
 
 // create a new note
@@ -54,15 +69,33 @@ export const createNote = note => {
   return fetch(`api/notes/${userId}`, {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + getJWTFromCookie(),
+      // 'Authorization': 'Bearer ' + getJWTFromCookie(),
     },
     method: 'POST',
     body: JSON.stringify(note),
   }).then(checkStatus);
 }
 
+// create a new event
+export const createEvent = event => {
+  const userId = event.userId;
+  return fetch(`api/events/${userId}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Authorization': 'Bearer ' + getJWTFromCookie(),
+    },
+    method: 'POST',
+    body: JSON.stringify(event),
+  }).then(checkStatus);
+}
+
 // delete a exsiting note
-export const deleteNote = userId => fetch(`api/notes/${userId}`, {
+export const deleteNote = noteId => fetch(`api/notes/${noteId}`, {
+  method: 'DELETE'
+}).then(checkStatus);
+
+// delete a exsiting event
+export const deleteEvent = eventId => fetch(`api/events/${eventId}`, {
   method: 'DELETE'
 }).then(checkStatus);
 

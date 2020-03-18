@@ -1,68 +1,73 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { Input, Button, Popconfirm } from 'antd';
-import { updateNote, createNote, deleteNote } from '../client';
-import { isEmpty } from '../util.js';
+import { Input, Button, Popconfirm, DatePicker } from 'antd';
+import { updateEvent, createEvent, deleteEvent } from '../client';
+import { isEmpty, momentToString, stringToMoment } from '../util.js';
 import { errorNotification, successNotification } from '../Notification';
 
-const tagStyle = { 
-  color: '#e2231a', 
+const tagStyle = {
+  color: '#e2231a',
   marginLeft: '12px',
   position: 'absolute',
   left: '27px',
 };
 
-
-const NoteForm = (props) => {
+const EventForm = (props) => {
 
   const onDelete = () => {
-    deleteNote(props.noteId)
-      .then(() => { 
+    deleteEvent(props.eventId)
+      .then(() => {
         props.onCancel();
-        successNotification('Note Deleted');
+        successNotification('Event Deleted');
         props.onDeleteSuccess();
       })
       .catch(err => { errorNotification('Error') })
   }
 
+  // function onTimeOk(value) {
+  //   console.log('onOk: ', value);
+  // }
+
   return (
-    <div className='note_form'>
+    <div className='event_form'>
       <Formik
         initialValues={{
-          title: props.title,
+          name: props.name,
+          time: props.time,
           description: props.description,
         }}
         validate={values => {
           const errors = {};
 
-          if (!values.title) {
-            errors.title = 'title required';
-          } else if (values.title.length > 100) {
-            errors.title = 'title should be shorter than 100 characters';
+          if (!values.name) {
+            errors.name = 'name required';
+          } else if (values.name.length > 100) {
+            errors.name = 'name should be shorter than 100 characters';
           }
 
-          if (!values.description) {
-            errors.description = 'description required';
-          } else if (values.description.length > 1000) {
-            errors.description = 'description should be shorter than 1000 characters';
+          if (values.description.length > 3000) {
+            errors.description = 'description should be shorter than 3000 characters';
+          }
+
+          if (!values.time) {
+            errors.time = 'event time required';
           }
 
           return errors;
         }}
-        onSubmit={(note, { setSubmitting }) => {
-          if (props.noteId) {
-            // if the component can receive a noteId, then we are modifying an existing note
-            updateNote({ ...note, userId: props.userId, noteId: props.noteId })
+        
+        onSubmit={(event, { setSubmitting }) => {
+          if (props.eventId) {
+            // if the component can receive a eventId, then we are modifying an existing event
+            updateEvent({ ...event, userId: props.userId, eventId: props.eventId })
               .then(() => { props.onSuccess(); setSubmitting(false);})
               .catch(err => { props.onFailure(err); setSubmitting(false);})
           } else {
-            // else, we are creating a new note
-            createNote({ ...note, userId: props.userId })
+            // else, we are creating a new event
+            createEvent({ ...event, userId: props.userId })
             .then(() => { props.onSuccess(); setSubmitting(false);})
             .catch(err => { props.onFailure(err); setSubmitting(false);})
           }
-          
-            // .finally(() => { setSubmitting(false); });
         }}
       >
         {({
@@ -75,19 +80,31 @@ const NoteForm = (props) => {
           isSubmitting,
           submitForm,
           isValid,
-        }) => (
+          setFieldValue
+        }) => {
+
+          const onTimeChange = (obj) => {
+            const str = momentToString(obj);
+            setFieldValue('time', str);
+          }
+
+          const momentObj = stringToMoment(values.time);
+
+          return (
             <form onSubmit={handleSubmit} className='inner_form'>
               <Input
-                // style={inputStyle}
-                name="title"
+                name="name"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.title}
-                placeholder='please insert title'
+                value={values.name}
+                placeholder='please insert event name'
               />
-              {errors.title && touched.title && <span style={{ ...tagStyle, top: '51px' }}>{errors.title}</span>}
+              {errors.name && touched.name && <span style={{ ...tagStyle, top: '51px' }}>{errors.name}</span>}
+
+              <div className='time_selection'>Event Time: <DatePicker value={momentObj} showTime onChange={onTimeChange} /></div>
+              {errors.time && <span style={{ ...tagStyle, top: '100px' }}>{errors.time}</span>}
+
               <Input.TextArea
-                // style={inputStyle}
                 name="description"
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -95,10 +112,10 @@ const NoteForm = (props) => {
                 placeholder='please insert description'
               />
               {errors.description && touched.description && <span style={{ ...tagStyle, top: '658px', width: '300px' }}>{errors.description}</span>}
-              
+            
               {/* Buttons */}
               <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
-                {props.noteId && 
+                {props.eventId && 
                 <Popconfirm title="Are you sure？" okText="Yes" cancelText="No" onConfirm={onDelete}>
                   <Button
                     type='danger'
@@ -112,9 +129,9 @@ const NoteForm = (props) => {
                   onClick={() => submitForm()}
                   type="primary"
                   style={{ marginRight: '10px' }}
-                  disabled={isSubmitting || (isEmpty(touched) && !props.noteId) || !isValid}
+                  disabled={isSubmitting || (isEmpty(touched) && !props.eventId) || !isValid}
                 >
-                  {props.noteId? 'Update' : 'Save'}
+                  {props.eventId? 'Update' : 'Save'}
                 </Button>
                 <Button
                   onClick={() => props.onCancel()}
@@ -124,10 +141,11 @@ const NoteForm = (props) => {
                 </Button>
               </div>
             </form>
-          )}
+          )
+        }}
       </Formik>
     </div>
   );
 }
 
-export default NoteForm;
+export default EventForm;
