@@ -23,7 +23,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-
+    document.title = 'My Website';
   }
 
   next = () => {
