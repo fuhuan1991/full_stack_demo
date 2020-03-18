@@ -27,8 +27,9 @@ class Meter extends Component {
           title={event.name}
           trigger="hover"
           placement='bottom'
+          key={event.name}
         >
-          <div className='point' style={{left: percentage + '%'}} key={event.name}></div>
+          <div className='point' style={{left: percentage + '%'}}></div>
         </Popover>
       );
     }
