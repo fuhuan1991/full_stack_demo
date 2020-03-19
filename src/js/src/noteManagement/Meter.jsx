@@ -37,6 +37,7 @@ class Meter extends Component {
     return (
       <div className='meter'>
         <h3 className='small_title'>Incomming events in next 30 days</h3>
+        <div className='small_text'>hover on the markers to see detail</div>
         <div className='axis'>
           <Popover
             content={

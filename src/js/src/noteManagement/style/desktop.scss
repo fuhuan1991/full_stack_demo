@@ -154,4 +154,12 @@
         }
     }
 
+    .event_form{
+        height: 500px;
+
+        .inner_form .ant-input[name="description"]{
+            height: 340px;
+        }
+    }
+
 }
