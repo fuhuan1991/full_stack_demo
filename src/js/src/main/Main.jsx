@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
-import './main.css';
-import { Carousel, Icon } from 'antd';
-import gameImg from '../assets/p1.png';
-import noteImg from '../assets/p2.png';
+import './main.scss';
+import { Carousel } from 'antd';
 import p0 from './img/home_page.png';
 import p1 from './img/dashboard.png';
 import p2 from './img/data_management.png';
 import p3 from './img/graph.png';
 import p4 from './img/graph2.png';
+import n1 from './img/n1.png';
+import n2 from './img/n2.png';
+import n3 from './img/n3.png';
+import n4 from './img/n4.png';
+import g1 from './img/g1.png';
+import g2 from './img/g2.png';
+import g3 from './img/g3.png';
 import {
   Link
 } from "react-router-dom";
@@ -17,7 +22,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mouseOverSlide: false,
+
     };
     this.carousel = React.createRef();
   }
@@ -31,14 +36,6 @@ class Main extends Component {
   }
   previous = () => {
     this.carousel.prev();
-  }
-
-  sliderEnter = () => {
-    this.setState({mouseOverSlide: true});
-  }
-
-  sliderLeave = () => {
-    this.setState({mouseOverSlide: false});
   }
 
   render () {
@@ -56,31 +53,25 @@ class Main extends Component {
         <hr className='line'/>
         <p className='white_font'>
           I am a master’s student in computer science at Tufts and am very passionate in applying
-          programing skills to create better experience for users. This semester, I am building a
-          mobile attendance system for faculties based on android system.I have 2-year full time 
-          working experience as a front-end engineer before joining Tufts
-          this year. I have tackled complex technical problems and demonstrated strong programming 
-          skills at Lenovo and GrowingIO.
+          programing skills to create better experience for users. I have 2-year full time 
+          working experience as a front-end engineer before joining Tufts last year. I have tackled 
+          complex technical problems and demonstrated strong programming skills at Lenovo and GrowingIO.
+          Last semester, I built a mobile attendance system for faculties based on android system.
+          Now, I am working on several different projects. 
         </p>
 
         <h1 className='white_font' style={{marginBottom: '0px'}}>PROJECTS</h1>
         <hr className='line'/>
 
-        <h1 className='white_font'>1. GrowingIO.com</h1>
-        <div className='slider' onMouseEnter={this.sliderEnter} onMouseLeave={this.sliderLeave}>
-          <Carousel ref={node => (this.carousel = node)}>
+        <h1 className='white_font sub_title'>1. GrowingIO.com</h1>
+        <div className='slider'>
+          <Carousel ref={node => (this.carousel = node)} autoplay>
             <img src={p0} alt='cannot be displayed due to network reasons'></img>
             <img src={p1} alt='cannot be displayed due to network reasons'></img>
             <img src={p2} alt='cannot be displayed due to network reasons'></img>
             <img src={p3} alt='cannot be displayed due to network reasons'></img>
             <img src={p4} alt='cannot be displayed due to network reasons'></img>
           </Carousel>
-          <div className={this.state.mouseOverSlide? 'arrowLeft' : 'arrowLeft hide'} onClick={this.previous}>
-            <Icon type="left" style={{ fontSize: 24, margin: '8px', color: 'white' }}/>
-          </div>
-          <div className={this.state.mouseOverSlide? 'arrowRight' : 'arrowRight hide'} onClick={this.next}>
-            <Icon type="right" style={{ fontSize: 24, margin: '8px', color: 'white' }}/>
-          </div>
         </div>
         <h2 className='white_font'>About this project</h2>
         <hr className='line'/>
@@ -111,8 +102,16 @@ class Main extends Component {
 
 
 
-        <h1 className='white_font'>2. Chalkboard Note &nbsp;<Link to="/note">Try it</Link></h1>
-        <img src={noteImg} alt='cannot be displayed due to network reasons'></img>
+        <h1 className='white_font sub_title'>2. Chalkboard Note &nbsp;<Link to="/note">Try it!</Link></h1>
+        {/* <img src={noteImg} alt='cannot be displayed due to network reasons'></img> */}
+        <div className='slider'>
+          <Carousel ref={node => (this.carousel = node)} autoplay>
+            <img src={n1} alt='cannot be displayed due to network reasons'></img>
+            <img src={n2} alt='cannot be displayed due to network reasons'></img>
+            <img src={n3} alt='cannot be displayed due to network reasons'></img>
+            <img src={n4} alt='cannot be displayed due to network reasons'></img>
+          </Carousel>
+        </div>
         <h2 className='white_font'>About this project</h2>
         <hr className='line'/>
         <p className='white_font'>
@@ -136,8 +135,15 @@ class Main extends Component {
 
 
 
-        <h1 className='white_font'>3. Reversi Game &nbsp;<Link to="/game">Try it</Link></h1>
-        <img src={gameImg} alt='cannot be displayed due to network reasons'></img>
+        <h1 className='white_font sub_title'>3. Reversi Game &nbsp;<Link to="/game">Try it!</Link></h1>
+        {/* <img src={gameImg} alt='cannot be displayed due to network reasons'></img> */}
+        <div className='slider'>
+          <Carousel ref={node => (this.carousel = node)} autoplay>
+            <img src={g1} alt='cannot be displayed due to network reasons'></img>
+            <img src={g2} alt='cannot be displayed due to network reasons'></img>
+            <img src={g3} alt='cannot be displayed due to network reasons'></img>
+          </Carousel>
+        </div>
         <h2 className='white_font'>About this project</h2>
         <hr className='line'/>
         <p className='white_font'>

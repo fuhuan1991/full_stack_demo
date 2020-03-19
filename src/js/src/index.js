@@ -19,7 +19,10 @@ const Root =
                 <Main />
             </Route>
             <Route path="/game">
-                <Game />
+                <div style={{padding: '36px'}}>
+                    <Game />
+                </div>
+                
             </Route>
             <Route path="/note">
                 <NoteManagement />
