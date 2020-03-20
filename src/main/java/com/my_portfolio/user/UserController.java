@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -71,5 +72,16 @@ public class UserController {
     System.out.println("---------------------------------------------");
     JWTResponse response = new JWTResponse(userList.get(0), jwt);
     return response;
+  }
+
+  @GetMapping(path = "/check")
+  public void check(@RequestParam String name, @RequestParam String jwt) throws Exception {
+    System.out.println("---------------check-------------------------");
+    String nameFormToken = this.jwtTokenUtil.extractUsername(jwt);
+    System.out.println(nameFormToken);
+    System.out.println(name);
+    if (!name.equals(nameFormToken)) {
+      throw new Exception("Invalid token, you need to login again");
+    }
   }
 }

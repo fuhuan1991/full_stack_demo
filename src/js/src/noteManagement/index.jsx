@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import { getCookie } from '../util.js';
+import { checkToken } from '../client.js';
 
 class NoteManagement extends Component {
 
@@ -25,9 +26,14 @@ class NoteManagement extends Component {
     const userId = getCookie('user_id');
 
     if (jwt && userName && userId) {
-      this.setState({ userId: userId });
-      successNotification('Login successful', 'Welcom back' + userName);
-      this.switchToStage('DESKTOP')();
+
+      checkToken(userName, jwt)
+      .then(() => {
+        this.setState({ userId: userId });
+        successNotification('Login successful', 'Welcom back ' + userName);
+        this.switchToStage('DESKTOP')();
+      })
+      .catch(err => { this.onLogout() });
     }
   }
 

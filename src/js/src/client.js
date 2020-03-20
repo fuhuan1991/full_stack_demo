@@ -107,3 +107,11 @@ export const getJWTFromCookie = () => {
     return '';
   }
 }
+
+// check if a jwt is still valid
+export const checkToken = (name, jwt) => fetch(`api/users/check?name=${name}&jwt=${jwt}`, {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  method: 'GET'
+}).then(checkStatus);
