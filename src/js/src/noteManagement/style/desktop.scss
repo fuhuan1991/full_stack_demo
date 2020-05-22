@@ -3,7 +3,7 @@
         top: 25px;
     }
     .ant-modal-content {
-        background-image: linear-gradient(rgba(53,85,131,0.2) 0%,rgba(255,255,255,1) 8%),url("../img/paper_gb.png");
+        background-image: linear-gradient(rgba(53,85,131,0.2) 0%,rgba(255,255,255,1) 4%),url("../img/paper_gb.png");
         background-size: 100% 25px,10% 10%;
         padding-left: 24px;
     }
@@ -40,6 +40,21 @@
             font-family: monospace;
             font-size: 20px;
         }
+    }
+    .font-btn.dec{
+        position: absolute;
+        bottom: 32px;
+        left: 42px;
+    }
+    .font-btn.reset{
+        position: absolute;
+        bottom: 32px;
+        left: 90px;
+    }
+    .font-btn.inc{
+        position: absolute;
+        bottom: 32px;
+        left: 165px;
     }
 }
 

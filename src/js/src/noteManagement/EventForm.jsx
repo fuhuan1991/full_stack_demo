@@ -41,12 +41,12 @@ const EventForm = (props) => {
 
           if (!values.name) {
             errors.name = 'name required';
-          } else if (values.name.length > 100) {
-            errors.name = 'name should be shorter than 100 characters';
+          } else if (values.name.length > 280) {
+            errors.name = 'name should be shorter than 280 characters';
           }
 
-          if (values.description.length > 3000) {
-            errors.description = 'description should be shorter than 3000 characters';
+          if (values.description.length > 3800) {
+            errors.description = 'description should be shorter than 3800 characters';
           }
 
           if (!values.time) {

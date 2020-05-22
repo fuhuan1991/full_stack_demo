@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { Formik } from 'formik';
 import { Input, Button, Popconfirm } from 'antd';
 import { updateNote, createNote, deleteNote } from '../client';
@@ -25,6 +26,24 @@ const NoteForm = (props) => {
       .catch(err => { errorNotification('Error') })
   }
 
+  const [fontSize, setFontSize] = useState(17);
+
+  const inc = () => {
+    if (fontSize < 36) {
+      setFontSize(fontSize+1);
+    }
+  }
+
+  const dec = () => {
+    if (fontSize > 10) {
+      setFontSize(fontSize-1);
+    }
+  }
+
+  const reset = () => {
+    setFontSize(17);
+  }
+
   return (
     <div className='note_form'>
       <Formik
@@ -37,14 +56,14 @@ const NoteForm = (props) => {
 
           if (!values.title) {
             errors.title = 'title required';
-          } else if (values.title.length > 100) {
-            errors.title = 'title should be shorter than 100 characters';
+          } else if (values.title.length > 280) {
+            errors.title = 'title should be shorter than 280 characters';
           }
 
           if (!values.description) {
             errors.description = 'description required';
-          } else if (values.description.length > 1000) {
-            errors.description = 'description should be shorter than 1000 characters';
+          } else if (values.description.length > 11500) {
+            errors.description = 'description should be shorter than 11500 characters';
           }
 
           return errors;
@@ -93,10 +112,10 @@ const NoteForm = (props) => {
                 onBlur={handleBlur}
                 value={values.description}
                 placeholder='please insert description'
+                style={{fontSize: fontSize + 'px'}}
               />
               {errors.description && touched.description && <span style={{ ...tagStyle, top: '658px', width: '300px' }}>{errors.description}</span>}
               
-              {/* Buttons */}
               <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
                 {props.noteId && 
                 <Popconfirm title="Are you sure？" okText="Yes" cancelText="No" onConfirm={onDelete}>
@@ -126,6 +145,9 @@ const NoteForm = (props) => {
             </form>
           )}
       </Formik>
+      <Button onClick={dec} className="font-btn dec">-</Button>
+      <Button onClick={reset} className="font-btn reset">reset</Button>
+      <Button type="primary" onClick={inc} className="font-btn inc">+</Button>
     </div>
   );
 }

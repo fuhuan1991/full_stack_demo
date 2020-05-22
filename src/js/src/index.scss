@@ -12,7 +12,13 @@ code {
     monospace;
 }
 
-.white_font {
-  color: #cacaca;
-  font-size: 24px;
+.main {
+  background-color: #2a2a2a;
+  padding: 20px;
+  height: 100%;
+
+  .white_font {
+      color: #cacaca;
+      font-size: 24px;
+  }
 }

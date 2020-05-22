@@ -4,7 +4,7 @@ import { Input, Button, Icon } from 'antd';
 import { signup } from '../client.js';
 import { isEmpty, isEmail } from '../util.js';
 
-const tagStyle = { color: '#e2231a'};
+const tagStyle = { color: '#e2231a', fontSize: '17px'};
 const inputStyle = { marginBottom: '10px', width: '350px', display: 'block' };
 
 const SignupForm = (props) => {
@@ -21,15 +21,17 @@ const SignupForm = (props) => {
           const errors = {};
 
           if (!values.name) {
-            errors.name = 'name required';
-          } else if (values.name.length > 100) {
-            errors.name = 'name should be shorter than 100 characters'
+            errors.name = 'Name required';
+          } else if (values.name.length > 80) {
+            errors.name = 'Name should be shorter than 80 characters'
           }
 
           if (!values.password) {
-            errors.password = 'password required';
-          } else if (values.password.length > 20) {
-            errors.password = 'password should be shorter than 20 characters'
+            errors.password = 'Password required';
+          } else if (values.password.length > 18) {
+            errors.password = 'Password should be shorter than 18 characters'
+          } else if (values.password.indexOf(' ') > -1) {
+            errors.password = 'No space is allowed in password';
           }
 
           if (!values.email) {
@@ -37,7 +39,7 @@ const SignupForm = (props) => {
           } else if (!isEmail(values.email)) {
             errors.email = 'invalid E-mail address';
           } else if (values.email.length > 100) {
-            errors.email = 'email E-mail should be shorter than 100 characters'
+            errors.email = 'E-mail should be shorter than 100 characters'
           }
 
           return errors;

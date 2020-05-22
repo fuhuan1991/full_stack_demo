@@ -16,7 +16,6 @@
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "typescript": "^3.8.2",
     "unfetch": "^4.1.0"
@@ -24,6 +23,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "move": "mv build/* ../main/resources/static/",
+    "clear": "rm -rf ../main/resources/static/*",
+    "build+": "npm run build && npm run clear && npm run move",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

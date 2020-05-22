@@ -1,35 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.2f993708.chunk.css",
-    "main.js": "/static/js/main.27c3e804.chunk.js",
-    "main.js.map": "/static/js/main.27c3e804.chunk.js.map",
+    "main.css": "/static/css/main.6a69e6e7.chunk.css",
+    "main.js": "/static/js/main.d6541227.chunk.js",
+    "main.js.map": "/static/js/main.d6541227.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.503500fc.js",
     "runtime-main.js.map": "/static/js/runtime-main.503500fc.js.map",
     "static/css/2.aef8ad04.chunk.css": "/static/css/2.aef8ad04.chunk.css",
-    "static/js/2.111c9a8b.chunk.js": "/static/js/2.111c9a8b.chunk.js",
-    "static/js/2.111c9a8b.chunk.js.map": "/static/js/2.111c9a8b.chunk.js.map",
+    "static/js/2.536d69be.chunk.js": "/static/js/2.536d69be.chunk.js",
+    "static/js/2.536d69be.chunk.js.map": "/static/js/2.536d69be.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.a8bdf8473cf10e0caa9d7ae5047c6744.js": "/precache-manifest.a8bdf8473cf10e0caa9d7ae5047c6744.js",
+    "precache-manifest.b8362a087c1ad5907884eb292d113829.js": "/precache-manifest.b8362a087c1ad5907884eb292d113829.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.aef8ad04.chunk.css.map": "/static/css/2.aef8ad04.chunk.css.map",
-    "static/css/main.2f993708.chunk.css.map": "/static/css/main.2f993708.chunk.css.map",
-    "static/js/2.111c9a8b.chunk.js.LICENSE.txt": "/static/js/2.111c9a8b.chunk.js.LICENSE.txt",
+    "static/css/main.6a69e6e7.chunk.css.map": "/static/css/main.6a69e6e7.chunk.css.map",
+    "static/js/2.536d69be.chunk.js.LICENSE.txt": "/static/js/2.536d69be.chunk.js.LICENSE.txt",
     "static/media/index.scss": "/static/media/chalkboard_bg.6fb19d93.png",
-    "static/media/dashboard.png": "/static/media/dashboard.eccb301b.png",
-    "static/media/data_management.png": "/static/media/data_management.7dc3208c.png",
-    "static/media/graph.png": "/static/media/graph.9d066c1f.png",
-    "static/media/graph2.png": "/static/media/graph2.d583ef95.png",
-    "static/media/game.scss": "/static/media/wood.53cd660d.jpg",
-    "static/media/home_page.png": "/static/media/home_page.e8315dc0.png",
-    "static/media/p1.png": "/static/media/p1.28a7a64b.png",
-    "static/media/p2.png": "/static/media/p2.4b92592b.png",
-    "static/media/desktop.scss": "/static/media/paper_gb.b5255cac.png"
+    "static/media/desktop.scss": "/static/media/yellow_paper.4386514d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.503500fc.js",
     "static/css/2.aef8ad04.chunk.css",
-    "static/js/2.111c9a8b.chunk.js",
-    "static/css/main.2f993708.chunk.css",
-    "static/js/main.27c3e804.chunk.js"
+    "static/js/2.536d69be.chunk.js",
+    "static/css/main.6a69e6e7.chunk.css",
+    "static/js/main.d6541227.chunk.js"
   ]
 }

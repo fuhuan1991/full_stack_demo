@@ -4,9 +4,6 @@ import LoginForm from './LoginForm';
 import { successNotification, errorNotification } from '../Notification';
 import SignupForm from './SignupForm';
 import Desktop from './Desktop';
-import {
-  Link
-} from "react-router-dom";
 import { getCookie } from '../util.js';
 import { checkToken } from '../client.js';
 
@@ -87,7 +84,6 @@ class NoteManagement extends Component {
   render() {
     return (
       <React.Fragment>
-        <Link style={{fontSize: '24px', margin: '10px'}} to="/">Back</Link>
         <div className='note_management'>
           {this.state.currentStage === 'LOGIN' 
             && 

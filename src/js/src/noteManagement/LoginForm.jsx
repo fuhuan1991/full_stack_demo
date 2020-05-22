@@ -4,7 +4,7 @@ import { Input, Button, Icon } from 'antd';
 import { login } from '../client.js';
 import { isEmpty } from '../util.js';
 
-const tagStyle = { color: '#e2231a'};
+const tagStyle = { color: '#e2231a', fontSize: '17px'};
 const inputStyle = { marginBottom: '10px', width: '350px', display: 'block' };
 
 const LoginForm = (props) => {
@@ -20,13 +20,12 @@ const LoginForm = (props) => {
           const errors = {};
 
           if (!values.name) {
-            errors.name = 'name required';
+            errors.name = 'Name required';
           }
 
           if (!values.password) {
-            errors.password = 'password required';
+            errors.password = 'Password required';
           }
-
           return errors;
         }}
         onSubmit={(user, { setSubmitting }) => {
@@ -61,6 +60,7 @@ const LoginForm = (props) => {
             <span className='chalkboard_font'>password:</span> {errors.password && touched.password && <span style={tagStyle}>{errors.password}</span>}
             <Input
               style={inputStyle}
+              type="password"
               name="password"
               onChange={handleChange}
               onBlur={handleBlur}

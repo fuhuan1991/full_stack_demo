@@ -11,15 +11,29 @@
     border-left: #b19876 solid 12px;
     border-bottom: #c9ad86 solid 12px;
     box-shadow: 0px 0px 6px 5px rgba(58, 18, 13, 0), 0px 0px 0px 2px #c2a782, 0px 0px 0px 4px #a58e6f, 3px 4px 8px 5px rgba(0, 0, 0, 0.5);
-    
-    .ant-input{
-        max-width: 80%;
-    }
 }
 
 @media screen and (max-width: 600px) {
+    .main{
+        padding: 0px!important;
+    }
     .note_management{
         margin: 0px;
+    }
+    input.ant-input{
+        width: 80%!important;
+    }
+    input.ant-input[name="title"]{
+        width: 100%!important;
+    }
+    .big_title{
+        font-size: 40px!important;
+    }
+    .note_management{
+        padding: 12px;
+    }
+    .font-btn{
+        bottom: -40px!important;
     }
 }
 
